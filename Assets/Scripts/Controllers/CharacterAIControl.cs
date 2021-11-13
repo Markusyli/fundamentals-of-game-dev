@@ -8,6 +8,7 @@ public class CharacterAIControl : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent { get; private set; }             // the navmesh agent required for the path finding
     public Character character { get; private set; } // the character we are controlling
     public Transform target;                                    // target to aim for
+    public Transform lookPoint;
     public float lookRadius = 10f;
 
     private PlayerManager playerManager;
@@ -24,6 +25,10 @@ public class CharacterAIControl : MonoBehaviour
 
         playerManager = PlayerManager.instance;
         characterCombat = GetComponent<CharacterCombat>();
+
+        // Default the lookpoint to root transform
+        if (lookPoint == null)
+            lookPoint = transform;
     }
 
     public void SetTarget(Transform target)
@@ -33,17 +38,21 @@ public class CharacterAIControl : MonoBehaviour
 
     private void Update()
     {
+        if (character.isDead)
+            return;
+
         if (target != null)
         {
             Character playerCharacter = playerManager.player.GetComponent<Character>();
 
-            float distance = Vector3.Distance(transform.position, target.position) / playerCharacter.Visibility();
+            float lookDistance = Vector3.Distance(lookPoint.position, target.position) / playerCharacter.Visibility();
+            float physicalDistance = Vector3.Distance(transform.position, target.position);
 
-            if (distance <= lookRadius)
+            if (lookDistance <= lookRadius)
             {
                 agent.SetDestination(target.position);
 
-                if (distance <= agent.stoppingDistance)
+                if (physicalDistance <= agent.stoppingDistance)
                 {
                     characterCombat.Attack();
 
@@ -67,7 +76,9 @@ public class CharacterAIControl : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        if (lookPoint == null) return;
+
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, lookRadius);
+        Gizmos.DrawWireSphere(lookPoint.position, lookRadius);
     }
 }

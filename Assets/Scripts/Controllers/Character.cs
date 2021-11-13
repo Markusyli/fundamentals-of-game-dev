@@ -42,6 +42,7 @@ public class Character : MonoBehaviour
 	Vector3 m_CapsuleCenter;
 	CapsuleCollider m_Capsule;
 	bool m_Crouching;
+	public bool isDead;
 
 	void Start()
 	{
@@ -55,7 +56,7 @@ public class Character : MonoBehaviour
 		m_OrigGroundCheckDistance = m_GroundCheckDistance;
 	}
 
-	public float Visibility()
+    public float Visibility()
 	{
 		return m_Crouching ? 0.5f : 1f;
 	}
@@ -134,8 +135,8 @@ public class Character : MonoBehaviour
 	void UpdateAnimator(Vector3 move)
 	{
 		// update the animator parameters
-		m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
-		m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
+		m_Animator.SetFloat("Forward", m_ForwardAmount, 0.03f, Time.deltaTime);
+		m_Animator.SetFloat("Turn", m_TurnAmount, 0.03f, Time.deltaTime);
 		m_Animator.SetBool("Crouch", m_Crouching);
 		m_Animator.SetBool("OnGround", m_IsGrounded);
 		if (!m_IsGrounded)

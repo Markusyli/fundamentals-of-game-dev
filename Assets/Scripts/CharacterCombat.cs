@@ -1,13 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class CharacterCombat : MonoBehaviour
 {
     public Transform attackPoint;
-    public float attackRange = 0.5f;
+    public float attackRange = .5f;
+    public float attackDelay = .6f;
+    public float attackSpeed = 2f;
     public LayerMask enemyLayers;
 
     private Animator animator;
+    private float attackCooldown = 0f;
 
     public void Attack()
     {
@@ -17,6 +21,9 @@ public class CharacterCombat : MonoBehaviour
 
             return;
         }
+
+        if (attackCooldown > 0f)
+            return;
 
         animator.SetTrigger("Attack");
 
@@ -28,13 +35,27 @@ public class CharacterCombat : MonoBehaviour
             CharacterStats characterStats = enemy.GetComponent<CharacterStats>();
 
             if (characterStats != null)
-                characterStats.TakeDamage(30);
+                StartCoroutine(DoDamage(characterStats, attackDelay));
+
+            attackCooldown = 1f / attackSpeed;
         }
+    }
+
+    private IEnumerator DoDamage(CharacterStats stats, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        stats.TakeDamage(30);
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        attackCooldown -= Time.deltaTime;
     }
 
     private void OnDrawGizmosSelected()

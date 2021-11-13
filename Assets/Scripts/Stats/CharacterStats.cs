@@ -8,6 +8,8 @@ public class CharacterStats : MonoBehaviour
     public Stat damage;
     public Stat armor;
 
+    private RagdollController ragdollController;
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -20,16 +22,18 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void Die()
     {
-        // Implement die
         Debug.Log(transform.name + " died.");
-
-        GetComponent<Collider>().enabled = false;
-        this.enabled = false;
-        GetComponent<Animator>().enabled = false;
+        
+        ragdollController.DoRagdoll();
     }
 
     private void Awake()
     {
         currentHealth = maxHealth;
+    }
+
+    private void Start()
+    {
+        ragdollController = GetComponent<RagdollController>();
     }
 }
