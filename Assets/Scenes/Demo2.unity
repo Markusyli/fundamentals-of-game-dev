@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45142525, g: 0.50080264, b: 0.57170135, a: 1}
+  m_IndirectSpecularColor: {r: 0.45142585, g: 0.5008034, b: 0.5717026, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16997,11 +16997,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2611842978722347253, guid: 5210a0a970692445ba1e1265219ba795, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09251396
+      value: 0.092513986
       objectReference: {fileID: 0}
     - target: {fileID: 2611842978722347253, guid: 5210a0a970692445ba1e1265219ba795, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.09103374
+      value: -0.091033764
       objectReference: {fileID: 0}
     - target: {fileID: 2611842979033764780, guid: 5210a0a970692445ba1e1265219ba795, type: 3}
       propertyPath: m_Follow
@@ -17125,14 +17125,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2420628912333157305, guid: f3ae17e1805f7418084e101a12fc94b5, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: -0.19098906
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227637689203500031, guid: f3ae17e1805f7418084e101a12fc94b5, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 0.19098926
-      objectReference: {fileID: 0}
     - target: {fileID: 4721221575451891218, guid: f3ae17e1805f7418084e101a12fc94b5, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -17185,14 +17177,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 229731073}
-    - target: {fileID: 6345773563358306341, guid: f3ae17e1805f7418084e101a12fc94b5, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: -0.098967046
-      objectReference: {fileID: 0}
-    - target: {fileID: 7303150576552789738, guid: f3ae17e1805f7418084e101a12fc94b5, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: -0.00000035390258
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3ae17e1805f7418084e101a12fc94b5, type: 3}
 --- !u!1001 &5211569311092297504
