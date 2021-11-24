@@ -137,7 +137,7 @@ public class Character : MonoBehaviour
 		// update the animator parameters
 		m_Animator.SetFloat("Forward", m_ForwardAmount, 0.03f, Time.deltaTime);
 		m_Animator.SetFloat("Turn", m_TurnAmount, 0.03f, Time.deltaTime);
-		m_Animator.SetBool("Crouch", m_Crouching);
+		// m_Animator.SetBool("Crouch", m_Crouching);
 		m_Animator.SetBool("OnGround", m_IsGrounded);
 		if (!m_IsGrounded)
 		{
