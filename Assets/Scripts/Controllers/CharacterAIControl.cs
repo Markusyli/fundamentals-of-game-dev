@@ -20,7 +20,7 @@ public class CharacterAIControl : MonoBehaviour
     private Character playerCharacter;
     private CharacterStats playerStats;
 
-    private void Start()
+    private void Awake()
     {
         // get the components on the object we need ( should not be null due to require component so no need to check )
         agent = GetComponentInChildren<UnityEngine.AI.NavMeshAgent>();
@@ -40,6 +40,9 @@ public class CharacterAIControl : MonoBehaviour
         // Default the lookpoint to root transform
         if (lookPoint == null)
             lookPoint = transform;
+
+        if (target == null)
+            target = player.transform;
     }
 
     public void SetTarget(Transform target)

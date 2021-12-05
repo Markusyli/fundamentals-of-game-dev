@@ -44,7 +44,7 @@ public class Character : MonoBehaviour
     private CharacterStats characterStats;
 	bool m_Crouching;
 
-	void Start()
+	void Awake()
 	{
 		m_Animator = GetComponent<Animator>();
 		m_Rigidbody = GetComponent<Rigidbody>();

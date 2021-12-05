@@ -5,6 +5,7 @@ public class GameOverMenu : MonoBehaviour
 {
     public void RestartButton()
     {
+        Destroy(PlayerManager.instance.player);
         SceneManager.LoadScene(1);
     }
 

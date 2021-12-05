@@ -8,10 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: ae06899eb46bf4461909627f92f31304
+  - enabled: 1
+    path: Assets/Scenes/Woods.unity
+    guid: 4eb97b427d3a6144ea751c81a7c907a5
   - enabled: 0
     path: Assets/Scenes/Demo2.unity
     guid: ee9760c57f7e54f9b86c3fd3eb63aa1d
   - enabled: 1
-    path: Assets/Scenes/Woods.unity
-    guid: 4eb97b427d3a6144ea751c81a7c907a5
+    path: Assets/Scenes/Cave.unity
+    guid: 69db0a145183e144cad69cf6c2ed0519
   m_configObjects: {}

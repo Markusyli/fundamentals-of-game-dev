@@ -63,10 +63,7 @@ public class CharacterStats : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
-    }
 
-    private void Start()
-    {
         ragdollController = GetComponent<RagdollController>();
         regenTick = new WaitForSeconds(healthRegenDelay);
 

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -9,5 +10,5 @@ public class PlayerManager : MonoBehaviour
         instance = this;
     }
 
-    public GameObject player;
+    public GameObject player => GameObject.FindGameObjectsWithTag("Player").First();
 }

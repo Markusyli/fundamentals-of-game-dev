@@ -15,25 +15,43 @@ public class CharacterUserControl : MonoBehaviour
     private Vector3 m_Move;
     private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
     private bool m_Attack;
+    private GameObject[] players;
 
-    private void Start()
+    private void Awake()
     {
-        // get the transform of the main camera
-        if (m_Camera != null)
-        {
-            m_Cam = m_Camera.transform;
-        }
-        else
-        {
-            Debug.LogWarning(
-                "Warning: no main camera found. Third person character needs a Camera tagged \"MainCamera\", for camera-relative controls.", gameObject);
-            // we use self-relative controls in this case, which probably isn't what the user wants, but hey, we warned them!
-        }
+        SetCamera();
 
         // get the third person character ( this should never be null due to require component )
         m_Character = GetComponent<Character>();
         m_CharacterCombat = GetComponent<CharacterCombat>();
         characterStats = GetComponent<CharacterStats>();
+
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
+
+        if (objs.Length > 1)
+        {
+            // Destroy(objs[0]);
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        SetCamera();
+        transform.position = GameObject.FindWithTag("LevelStartingPoint").transform.position;
+
+        players = GameObject.FindGameObjectsWithTag("Player");
+
+        if (players.Length > 1)
+        {
+            Destroy(players[1]);
+        }
+    }
+
+    private void SetCamera()
+    {
+        m_Cam = CameraManager.instance.mainCamera.transform;
     }
 
     private void Update()
