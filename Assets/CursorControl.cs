@@ -6,6 +6,10 @@ public class CursorControl : MonoBehaviour
     {
         Cursor.visible = true;
     }
+    public static void DisableCursor()
+    {
+        Cursor.visible = false;
+    }
 
     private void Start()
     {

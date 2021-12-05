@@ -441,8 +441,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -96}
-  m_SizeDelta: {x: 471.4566, y: 107.27869}
+  m_AnchoredPosition: {x: 0, y: -94.4}
+  m_SizeDelta: {x: 679.5424, y: 107.2787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2103012207599861025
 CanvasRenderer:
@@ -485,7 +485,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Over
+  m_Text: Dude in the Woods
 --- !u!1 &2103012207650733188
 GameObject:
   m_ObjectHideFlags: 0

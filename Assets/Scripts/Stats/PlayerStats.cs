@@ -8,7 +8,7 @@ public class PlayerStats : CharacterStats
     public XpBar xpBar;
     public Text uiLvl;
 
-    public delegate void PlayerKilled(int experiencePoints);
+    public delegate void PlayerKilled();
     public static event PlayerKilled OnPlayerKilled;
 
     private int nextLevel;
@@ -33,21 +33,11 @@ public class PlayerStats : CharacterStats
         xpBar.SetXp(xp);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.U))
-            LevelUp();
-
-
-        if (Input.GetKeyDown(KeyCode.K))
-            Die();
-    }
-
     public override void Die()
     {
         base.Die();
 
-        OnPlayerKilled?.Invoke(xp);
+        OnPlayerKilled?.Invoke();
     }
 
     private void LevelUp()

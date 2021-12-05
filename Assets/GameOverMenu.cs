@@ -14,16 +14,33 @@ public class GameOverMenu : MonoBehaviour
         Application.Quit();
     }
 
-    private void ShowUp(int experiencePoints)
+    public void ShowUp()
     {
         CursorControl.EnableCursor();
         gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        CursorControl.DisableCursor();
+        gameObject.SetActive(false);
     }
 
     private void Awake()
     {
         gameObject.SetActive(false);
         PlayerStats.OnPlayerKilled += ShowUp;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gameObject.activeSelf)
+                Hide();
+            else
+                ShowUp();
+        }
     }
 
     private void OnDestroy()
