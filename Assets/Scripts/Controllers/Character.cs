@@ -41,15 +41,16 @@ public class Character : MonoBehaviour
 	float m_CapsuleHeight;
 	Vector3 m_CapsuleCenter;
 	CapsuleCollider m_Capsule;
+    private CharacterStats characterStats;
 	bool m_Crouching;
-	public bool isDead;
 
 	void Start()
 	{
 		m_Animator = GetComponent<Animator>();
 		m_Rigidbody = GetComponent<Rigidbody>();
 		m_Capsule = GetComponent<CapsuleCollider>();
-		m_CapsuleHeight = m_Capsule.height;
+        characterStats = GetComponent<CharacterStats>();
+        m_CapsuleHeight = m_Capsule.height;
 		m_CapsuleCenter = m_Capsule.center;
 
 		m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
@@ -63,6 +64,7 @@ public class Character : MonoBehaviour
 
 	public void Move(Vector3 move, bool crouch, bool jump)
 	{
+        if (characterStats.isDead) return;
 
 		// convert the world relative moveInput vector into a local-relative
 		// turn amount and forward amount required to head in the desired
@@ -131,7 +133,6 @@ public class Character : MonoBehaviour
 		}
 	}
 
-
 	void UpdateAnimator(Vector3 move)
 	{
 		// update the animator parameters
@@ -169,7 +170,6 @@ public class Character : MonoBehaviour
 		}
 	}
 
-
 	void HandleAirborneMovement()
 	{
 		// apply extra gravity from multiplier:
@@ -178,7 +178,6 @@ public class Character : MonoBehaviour
 
 		m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
 	}
-
 
 	void HandleGroundedMovement(bool crouch, bool jump)
 	{
@@ -192,14 +191,12 @@ public class Character : MonoBehaviour
 			m_GroundCheckDistance = 0.1f;
 		}
 	}
-
 	void ApplyExtraTurnRotation()
 	{
 		// help the character turn faster (this is in addition to root rotation in the animation)
 		float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount);
 		transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
 	}
-
 
 	public void OnAnimatorMove()
 	{
@@ -214,7 +211,6 @@ public class Character : MonoBehaviour
 			m_Rigidbody.velocity = v;
 		}
 	}
-
 
 	void CheckGroundStatus()
 	{

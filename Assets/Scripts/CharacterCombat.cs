@@ -11,6 +11,7 @@ public class CharacterCombat : MonoBehaviour
     public LayerMask enemyLayers;
 
     private Animator animator;
+    private CharacterStats characterStats;
     private float attackCooldown = 0f;
 
     public void Attack()
@@ -32,10 +33,10 @@ public class CharacterCombat : MonoBehaviour
         foreach(var enemy in hitEnemies)
         {
             Debug.Log("Hit to enemy " + enemy.name);
-            CharacterStats characterStats = enemy.GetComponent<CharacterStats>();
+            CharacterStats enemyStats = enemy.GetComponent<CharacterStats>();
 
-            if (characterStats != null)
-                StartCoroutine(DoDamage(characterStats, attackDelay));
+            if (enemyStats != null)
+                StartCoroutine(DoDamage(enemyStats, attackDelay));
 
             attackCooldown = 1f / attackSpeed;
         }
@@ -45,12 +46,13 @@ public class CharacterCombat : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        stats.TakeDamage(30);
+        stats.TakeDamage(25 + characterStats.level * 5);
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        characterStats = GetComponent<CharacterStats>();
     }
 
     private void Update()

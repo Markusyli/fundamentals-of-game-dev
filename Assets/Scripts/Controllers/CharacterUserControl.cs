@@ -9,6 +9,7 @@ public class CharacterUserControl : MonoBehaviour
 
     private Character m_Character; // A reference to the ThirdPersonCharacter on the object
     private CharacterCombat m_CharacterCombat;
+    private CharacterStats characterStats;
     private Transform m_Cam;                  // A reference to the main camera in the scenes transform
     private Vector3 m_CamForward;             // The current forward direction of the camera
     private Vector3 m_Move;
@@ -32,6 +33,7 @@ public class CharacterUserControl : MonoBehaviour
         // get the third person character ( this should never be null due to require component )
         m_Character = GetComponent<Character>();
         m_CharacterCombat = GetComponent<CharacterCombat>();
+        characterStats = GetComponent<CharacterStats>();
     }
 
     private void Update()
@@ -47,6 +49,8 @@ public class CharacterUserControl : MonoBehaviour
     // Fixed update is called in sync with physics
     private void FixedUpdate()
     {
+        if (characterStats.isDead) return;
+
         // read inputs
         float h = CrossPlatformInputManager.GetAxis("Horizontal");
         float v = CrossPlatformInputManager.GetAxis("Vertical");

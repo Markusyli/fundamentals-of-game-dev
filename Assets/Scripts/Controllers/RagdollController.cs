@@ -6,7 +6,6 @@ public class RagdollController : MonoBehaviour
     public GameObject ragdollModel;
 
     private Collider mainCollider;
-    private Character character;
     private Collider[] ragdollColliders;
 
     private void Start()
@@ -15,15 +14,6 @@ public class RagdollController : MonoBehaviour
         mainModel.SetActive(true);
         ragdollModel.SetActive(false);
         ragdollColliders = ragdollModel.GetComponentsInChildren<Collider>(true);
-
-        character = GetComponent<Character>();
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-            DoRagdoll();
     }
 
     public void DoRagdoll()
@@ -49,8 +39,6 @@ public class RagdollController : MonoBehaviour
 
         mainModel.SetActive(false);
         ragdollModel.SetActive(true);
-
-        character.isDead = true;
     }
 
     private void CopyTransformsRecursive(GameObject source, GameObject destination)
