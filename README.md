@@ -4,4 +4,4 @@
 
 [Awesome teaser](https://youtu.be/4rjgBvOl6-4)
 
-[Play online](https://play.unity.com/mg/other/dude-in-the-woods)
+[Play online](https://play.unity.com/mg/other/dude-in-the-woods-1)
