@@ -26,13 +26,6 @@ public class CharacterUserControl : MonoBehaviour
         m_CharacterCombat = GetComponent<CharacterCombat>();
         characterStats = GetComponent<CharacterStats>();
 
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
-
-        if (objs.Length > 1)
-        {
-            // Destroy(objs[0]);
-        }
-
         DontDestroyOnLoad(gameObject);
     }
 
